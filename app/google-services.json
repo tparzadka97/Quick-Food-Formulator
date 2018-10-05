@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "982806448948",
+    "firebase_url": "https://quick-food-formulator.firebaseio.com",
+    "project_id": "quick-food-formulator",
+    "storage_bucket": "quick-food-formulator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982806448948:android:b58a90e7fb0ca6c0",
+        "android_client_info": {
+          "package_name": "com.example.haleigh.quickfoodformulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982806448948-g1cfs6bo6q5o6moh517h7iu7sj628m84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRBACIoQGP1f7KPzUW6pIHUHgjgDQPpn8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
