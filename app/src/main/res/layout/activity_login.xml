@@ -52,6 +52,16 @@
             android:layout_below="@+id/login"
             android:layout_centerInParent="true"
             android:text="Forgot Password?" />
+
+        <Button
+            android:id="@+id/register"
+            style="@style/Widget.AppCompat.ActionButton.CloseMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/forgotpassword"
+            android:layout_centerInParent="true"
+            android:text="Don't have an account? Register here." />
+
     </RelativeLayout>
 
 </RelativeLayout>
