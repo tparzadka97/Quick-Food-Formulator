@@ -3,9 +3,9 @@ package com.example.haleigh.quickfoodformulator;
 import java.util.ArrayList;
 
 public class User {
-    private String first;
-    private String last;
-    private String email;
+    protected String first;
+    protected String last;
+    protected String email;
 
     ArrayList<String> foodList = new ArrayList<>();
 

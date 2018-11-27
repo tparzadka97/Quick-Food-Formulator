@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundgradient"
     tools:context=".login">
 
     <RelativeLayout
@@ -22,7 +23,10 @@
             android:layout_margin="10dp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="#3a07f4"
+            android:backgroundTint="#3a07f4"
+            android:textColorHint="#3a07f4"/>
 
 
         <EditText
@@ -32,7 +36,10 @@
             android:layout_centerInParent="true"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="#3a07f4"
+            android:backgroundTint="#3a07f4"
+            android:textColorHint="#3a07f4"/>
 
         <Button
             android:id="@+id/login"
@@ -41,6 +48,8 @@
 
             android:layout_below="@id/passwordField"
             android:layout_centerHorizontal="true"
+            android:textColor="#0d2cf7"
+            android:background="@drawable/roundbutton"
 
             android:text="Login" />
 
@@ -51,7 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
             android:layout_centerInParent="true"
-            android:text="Forgot Password?" />
+            android:text="Forgot Password?"
+            android:textColor="#3a07f4"
+            android:backgroundTint="#3a07f4"
+            android:textColorHint="#3a07f4"/>
 
         <Button
             android:id="@+id/register"
@@ -60,7 +72,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/forgotpassword"
             android:layout_centerInParent="true"
-            android:text="Don't have an account? Register here." />
+            android:text="Don't have an account? Register here."
+            android:textColor="#3a07f4"
+            android:backgroundTint="#3a07f4"
+            android:textColorHint="#3a07f4"/>
 
     </RelativeLayout>
 

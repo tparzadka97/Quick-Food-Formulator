@@ -13,6 +13,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         findViewById(R.id.register).setOnClickListener(this);
+        findViewById(R.id.login).setOnClickListener(this);
     }
 
 
@@ -21,6 +22,12 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.register:
                 startActivity(new Intent(this, createAccount.class));
+                break;
+        }
+        switch (v.getId()) {
+            case R.id.login:
+        //        FirebaseSignin(email.getText().toString(), password.getText().toString());
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }
