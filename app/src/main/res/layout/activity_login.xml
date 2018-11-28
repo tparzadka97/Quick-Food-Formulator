@@ -10,6 +10,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -21,12 +27,12 @@
             android:layout_below="@id/emailField"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
+            android:backgroundTint="#3a07f4"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="#3a07f4"
-            android:backgroundTint="#3a07f4"
-            android:textColorHint="#3a07f4"/>
+            android:textColorHint="#3a07f4" />
 
 
         <EditText
@@ -34,12 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:backgroundTint="#3a07f4"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="#3a07f4"
-            android:backgroundTint="#3a07f4"
-            android:textColorHint="#3a07f4"/>
+            android:textColorHint="#3a07f4" />
 
         <Button
             android:id="@+id/login"
@@ -48,10 +54,10 @@
 
             android:layout_below="@id/passwordField"
             android:layout_centerHorizontal="true"
-            android:textColor="#0d2cf7"
             android:background="@drawable/roundbutton"
+            android:text="Login"
 
-            android:text="Login" />
+            android:textColor="#0d2cf7" />
 
         <Button
             android:id="@+id/forgotpassword"
@@ -60,10 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
             android:layout_centerInParent="true"
+            android:backgroundTint="#3a07f4"
             android:text="Forgot Password?"
             android:textColor="#3a07f4"
-            android:backgroundTint="#3a07f4"
-            android:textColorHint="#3a07f4"/>
+            android:textColorHint="#3a07f4" />
 
         <Button
             android:id="@+id/register"
@@ -72,11 +78,25 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/forgotpassword"
             android:layout_centerInParent="true"
+            android:backgroundTint="#3a07f4"
             android:text="Don't have an account? Register here."
             android:textColor="#3a07f4"
-            android:backgroundTint="#3a07f4"
-            android:textColorHint="#3a07f4"/>
+            android:textColorHint="#3a07f4" />
+
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="82dp"
+        app:srcCompat="@drawable/qfftransparent" />
+
 
 </RelativeLayout>

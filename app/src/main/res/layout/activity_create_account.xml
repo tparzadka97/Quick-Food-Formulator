@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundgradient"
     tools:context=".createAccount">
 
     <EditText
@@ -13,59 +14,91 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="142dp"
+        android:layout_marginTop="326dp"
         android:layout_marginRight="10dp"
-        android:hint="First Name" />
+        android:backgroundTint="#3a07f4"
+        android:hint="First Name"
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Last Name"
         android:id="@+id/LastNameField"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/FirstNameField"
-        />
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Email"
-    android:id="@+id/EmailField"
-    android:layout_below="@+id/LastNameField"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:inputType="textEmailAddress"
-    />
-    <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Password"
-    android:id="@+id/PasswordField"
-    android:layout_below="@+id/EmailField"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:inputType="textPassword"
-    />
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirm Password"
+        android:layout_below="@+id/FirstNameField"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#3a07f4"
+        android:hint="Last Name"
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
+
+    <EditText
+        android:id="@+id/EmailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LastNameField"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#3a07f4"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
+
+    <EditText
+        android:id="@+id/PasswordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EmailField"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#3a07f4"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
+
+    <EditText
         android:id="@+id/ConfirmPasswordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/PasswordField"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="-2dp"
         android:layout_marginRight="10dp"
+        android:backgroundTint="#3a07f4"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
-        />
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ConfirmPasswordField"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="Register" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/roundbutton"
+        android:text="Register"
+        android:textColor="#0d2cf7" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="82dp"
+        app:srcCompat="@drawable/qfftransparent" />
 
 
 </RelativeLayout>
