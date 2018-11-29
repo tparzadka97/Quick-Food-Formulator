@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.haleigh.quickfoodformulator">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +23,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".login" />
-        <activity android:name=".createAccount"></activity>
+        <activity android:name=".createAccount" />
+
+        <!-- Barcode/OCR -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode, ocr" />
+
+        <activity android:name=".cameraActivity"></activity>
     </application>
 
 </manifest>

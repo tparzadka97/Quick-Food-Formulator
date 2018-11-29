@@ -26,7 +26,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         }
         switch (v.getId()) {
             case R.id.login:
-        //        FirebaseSignin(email.getText().toString(), password.getText().toString());
+                //        FirebaseSignin(email.getText().toString(), password.getText().toString());
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }
