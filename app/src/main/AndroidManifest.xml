@@ -33,7 +33,8 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode, ocr" />
 
-        <activity android:name=".cameraActivity"></activity>
+        <activity android:name=".cameraActivity" />
+        <activity android:name=".Result"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,4 @@
 package com.example.haleigh.quickfoodformulator;
-
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
@@ -10,6 +8,8 @@ import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import android.Manifest;
+
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -18,28 +18,35 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-
 public class cameraActivity extends AppCompatActivity {
 
-    private SurfaceView sv;     //front end of camera
+    private SurfaceView sv;
+    private BarcodeDetector barcodeDetector;
+    private CameraSource cameraSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-
-        sv = (SurfaceView) findViewById(R.id.sv_camera);
-        cameraSource();
-
+        sv = (SurfaceView)findViewById(R.id.sv_camera);
+        startCameraSource();
     }
 
-    protected void cameraSource() {
-        BarcodeDetector detector = new BarcodeDetector.Builder(this).build();
-        final CameraSource cameraSource = new CameraSource.Builder(this, detector).setAutoFocusEnabled(true).setRequestedPreviewSize(1600, 1024).build();
+    private void startCameraSource() {
 
+        // Create the BarcodeDetector
+        barcodeDetector = new BarcodeDetector.Builder(this).build();
+
+
+        // Create CameraSource
+        cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).setRequestedPreviewSize(1600, 1024).build();;
+
+        /**
+         * Callback for Barcode Scanner
+         */
         sv.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
-            public void surfaceCreated(SurfaceHolder holder) {
+            public void surfaceCreated(SurfaceHolder surfaceHolder) {
                 if (ActivityCompat.checkSelfPermission(cameraActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions
@@ -58,18 +65,18 @@ public class cameraActivity extends AppCompatActivity {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
+            public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                 cameraSource.stop();
-
             }
         });
 
-        detector.setProcessor(new Detector.Processor<Barcode>() {
+
+        barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
 
@@ -88,4 +95,5 @@ public class cameraActivity extends AppCompatActivity {
             }
         });
     }
+
 }
