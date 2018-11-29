@@ -25,18 +25,19 @@ import java.util.ArrayList;
 
 public class createAccount extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText firstName;
+    private EditText firstName;     //createAccount fields
     private EditText lastName;
     private EditText email;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth;      //authentication
     private EditText password;
     private EditText confirmPass;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        //starting activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
         firstName = findViewById(R.id.FirstNameField);
         lastName = findViewById(R.id.LastNameField);
         email = findViewById(R.id.EmailField);
@@ -45,15 +46,15 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
 
         auth = FirebaseAuth.getInstance();
 
-        findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button2).setOnClickListener(this);        //button 2 = register button
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button2:
-                registerUser();
+            case R.id.button2:  //button 2 = register button
+                registerUser();     //when they click it, registerUser()
                 break;
         }
     }
@@ -118,13 +119,13 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
         Query emailCheck = FirebaseDatabase.getInstance().getReference("Users").orderByChild("email").equalTo(emailRegister);
         emailCheck.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {       //contains data from Firebase
                 if (dataSnapshot.exists()) {
                     email.setError("Email already in use");
                     email.requestFocus();
                     return;
                 } else {
-                    final ArrayList<String> foodList = new ArrayList<>();
+                    final ArrayList<String> foodList = new ArrayList<>();    //if they successfully registered, create their new food list
                     auth.createUserWithEmailAndPassword(emailRegister, passwordRegister)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -132,7 +133,7 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
                                     if (task.isSuccessful()) {
                                         //updateUsername();
                                         //Create user object for database
-                                        User user = new User(firstNameRegister, lastNameRegister, emailRegister, foodList);
+                                        User user = new User(firstNameRegister, lastNameRegister, emailRegister, foodList);     //actually registering the user with their new food list
                                         Log.d("Haleigh = ", user.first);
                                         FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -140,14 +141,14 @@ public class createAccount extends AppCompatActivity implements View.OnClickList
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(createAccount.this, "User successfully created.", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(createAccount.this, "User successfully created.", Toast.LENGTH_LONG).show();     //Toast: this pops up when the user is created
                                                     try {
                                                         Thread.sleep(500);
                                                     } catch (InterruptedException ex) {
                                                         android.util.Log.d("YourApplicationName", ex.toString());
                                                     }
                                                     startActivity(new Intent(createAccount.this, login.class));
-                                                } else {
+                                                } else {        //unable to create user (task.isSuccessful == false)
                                                     Toast.makeText(createAccount.this, "Could not create user.", Toast.LENGTH_LONG).show();
                                                 }
                                             }

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     TextView qrResult;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        //starting activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
@@ -95,24 +95,25 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //If the Barcode is a number
                     if(barcode.valueFormat == 5) {      //PRODUCT
+                        //Json outlines the various attributes of a product that we request it to - use API key
                         new JsonTask().execute("https://api.barcodelookup.com/v2/products?barcode=" + barcode.displayValue + "&formatted=y&key=jjgszqhu4fhqqa6369sd9elzn13omy");
                     }
-                    else if (barcode.valueFormat == 8) {        //URL
+                    else if (barcode.valueFormat == 8) {      //URL
                         Bundle bundle = new Bundle();
                         Intent i = new Intent(this, Result.class);
                         bundle.putString("qr_result", barcode.displayValue);
                         i.putExtras(bundle);
                         startActivity(i);
                     }
-                    else {
-                        Bundle bundle = new Bundle();
+                    else {      //barcode.valueFormat != 5 or 8 --> no barcode found --> send to Result via a Bundle
+                        Bundle bundle = new Bundle();       //create bundle to sent to result class
                         Intent i = new Intent(this, Result.class);
                         bundle.putString("barcode_number", "No barcode found!");
                         i.putExtras(bundle);
                         startActivity(i);
                     }
                 }
-                else {
+                else {      //data == null --> send result (no barcode found) to Result via a Bundle
                     Bundle bundle = new Bundle();
                     Intent i = new Intent(this, Result.class);
                     bundle.putString("barcode_number", "No barcode found!");
@@ -165,11 +166,11 @@ public class MainActivity extends AppCompatActivity {
                 barcode_number = "";
                 product_name = "";
                 ingredients = "";
-                barcode_number = value.products[0].barcode_number;
+                barcode_number = value.products[0].barcode_number;  //gets barcode number of product; [0] because it's this ONE product
 
-                product_name = value.products[0].product_name;
+                product_name = value.products[0].product_name;      //gets product's name; [0] because it's this ONE product
 
-                ingredients = value.products[0].ingredients;
+                ingredients = value.products[0].ingredients;        //gets ingredients of product; [0] because it's this ONE product
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -196,9 +197,9 @@ public class MainActivity extends AppCompatActivity {
             if (pd.isShowing()) {
                 pd.dismiss();
             }
-            Bundle bundle = new Bundle();
+            Bundle bundle = new Bundle();       //create bundle to send to result class
             Intent i = new Intent(getApplicationContext(), Result.class);
-            bundle.putString("ingredients", ingredients);
+            bundle.putString("ingredients", ingredients);       //inserting info into the bundle
             bundle.putString("product_name", product_name);
             bundle.putString("barcode_number", barcode_number);
             i.putExtras(bundle);

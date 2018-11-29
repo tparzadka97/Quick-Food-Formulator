@@ -17,17 +17,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText email;
+    private EditText email;         //login fields
     private EditText password;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth;      //authenticating login
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        //starting activity
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login);        //on login page created in layout
 
-        findViewById(R.id.register).setOnClickListener(this);
+        findViewById(R.id.register).setOnClickListener(this);   //various buttons on login page
         findViewById(R.id.login).setOnClickListener(this);
 
         email = findViewById(R.id.emailField);
@@ -38,16 +38,15 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {       //seeing which button they click
         switch (v.getId()) {
             case R.id.register:
-                startActivity(new Intent(this, createAccount.class));
+                startActivity(new Intent(this, createAccount.class));  //go to createAccount if they click on register instead of login
                 break;
         }
         switch (v.getId()) {
             case R.id.login:
-                FirebaseSignin(email.getText().toString(), password.getText().toString());
-                //startActivity(new Intent(this, MainActivity.class));
+                FirebaseSignin(email.getText().toString(), password.getText().toString());  //signing in w/ email and password
                 break;
         }
     }
@@ -66,15 +65,13 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = auth.getCurrentUser();
-//                            updateUI(user);
                             System.out.println("LOGIN SUCCESS!");
-                            Intent myIntent = new Intent(login.this, MainActivity.class);
+                            Intent myIntent = new Intent(login.this, MainActivity.class);   //once they're logged in, start main activity
                             startActivity(myIntent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(login.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
 
                         // [START_EXCLUDE]
@@ -92,7 +89,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         boolean valid = true;
 
         String newEmail = email.getText().toString();
-        if (TextUtils.isEmpty(newEmail)) {
+        if (TextUtils.isEmpty(newEmail)) {      //if they didn't enter an email
             email.setError("Required.");
             valid = false;
         } else {
@@ -100,7 +97,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         }
 
         String newPassword = password.getText().toString();
-        if (TextUtils.isEmpty(newPassword)) {
+        if (TextUtils.isEmpty(newPassword)) {       //if they didn't enter a password
             password.setError("Required.");
             valid = false;
         } else {

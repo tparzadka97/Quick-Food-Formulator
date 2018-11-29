@@ -19,6 +19,17 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#3a07f4"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#3a07f4"
+            android:textColorHint="#3a07f4" />
 
         <EditText
             android:id="@+id/passwordField"
@@ -34,18 +45,6 @@
             android:textColor="#3a07f4"
             android:textColorHint="#3a07f4" />
 
-
-        <EditText
-            android:id="@+id/emailField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:backgroundTint="#3a07f4"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="#3a07f4"
-            android:textColorHint="#3a07f4" />
 
         <Button
             android:id="@+id/login"

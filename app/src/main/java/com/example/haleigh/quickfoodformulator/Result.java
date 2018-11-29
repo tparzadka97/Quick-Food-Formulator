@@ -1,4 +1,5 @@
 package com.example.haleigh.quickfoodformulator;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,7 +24,7 @@ import java.net.URL;
 
 public class Result extends AppCompatActivity {
 
-    public String ingredients = "";
+    public String ingredients = "";     //reset fields
     public String product_name = "";
     public String barcode_number = "";
 
@@ -44,7 +45,7 @@ public class Result extends AppCompatActivity {
             public String datetime;
         }
 
-        public class Product {
+        public class Product {              //various attributes of a product
             public String barcode_number;
             public String barcode_type;
             public String barcode_formats;
@@ -94,15 +95,16 @@ public class Result extends AppCompatActivity {
     public TextView qrResult;
 
     public AsyncTask data2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        barcodeResult = (TextView)findViewById(R.id.barcode_result);
-        barcodeName = (TextView)findViewById(R.id.barcode_name);
-        barcodeIngredients = (TextView)findViewById(R.id.barcode_ingredients);
-        qrResult = (TextView)findViewById(R.id.qr_result);
+        barcodeResult = (TextView) findViewById(R.id.barcode_result);
+        barcodeName = (TextView) findViewById(R.id.barcode_name);
+        barcodeIngredients = (TextView) findViewById(R.id.barcode_ingredients);
+        qrResult = (TextView) findViewById(R.id.qr_result);
 
         barcode_number = "";
         product_name = "";
@@ -154,7 +156,7 @@ public class Result extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra("barcode");
 
                     // If the Barcode is a number
-                    if (barcode.valueFormat == 5) {
+                    if (barcode.valueFormat == 5) {         //PRODUCT
                         if (barcodeIngredients != null) {
                             barcodeIngredients.setText("");
                         }
@@ -167,30 +169,29 @@ public class Result extends AppCompatActivity {
                         if (qrResult != null) {
                             qrResult.setText("");
                         }
+                        //Json outlines the various attributes of a product that we request it to - use API key
                         new JsonTask().execute("https://api.barcodelookup.com/v2/products?barcode=" + barcode.displayValue + "&formatted=y&key=7oue1upadyvlvpes2imdxlygkpz1qt");
                     }
                     // If the scan results in a URL
-                    else if (barcode.valueFormat == 8) {
+                    else if (barcode.valueFormat == 8) {        //URL
                         qrResult.setText(barcode.displayValue);
                         qrResult.setMovementMethod(LinkMovementMethod.getInstance());
-                    }
-                    else {
+                    } else {      //if barcode.valueFormat != 5 or 8 --> no barcode
                         barcodeResult.setText("No barcode found!");
                     }
-                }
-                else {
+                } else {  //data == null
                     barcodeResult.setText("No barcode found!");
                 }
             }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
     private class JsonTask extends AsyncTask<String, String, String> {
 
-        public ProgressDialog pd = new ProgressDialog(Result.this);;
+        public ProgressDialog pd = new ProgressDialog(Result.this);
+        ;
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -213,21 +214,21 @@ public class Result extends AppCompatActivity {
                 String str = "";
                 String data2 = "";
 
-                while (null != (str= br.readLine())) {
-                    data2 +=str;
+                while (null != (str = br.readLine())) {
+                    data2 += str;
                 }
 
                 Gson g = new Gson();
 
                 Sample.RootObject value = g.fromJson(data2, Sample.RootObject.class);
                 barcode_number = "";
-                barcode_number = value.products[0].barcode_number;
+                barcode_number = value.products[0].barcode_number;      //gets barcode number of product; [0] because it's this ONE product
 
                 product_name = "";
-                product_name = value.products[0].product_name;
+                product_name = value.products[0].product_name;          //gets product's name; [0] because it's this ONE product
 
                 ingredients = "";
-                ingredients = value.products[0].ingredients;
+                ingredients = value.products[0].ingredients;            //gets ingredients of product; [0] because it's this ONE product
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -254,6 +255,8 @@ public class Result extends AppCompatActivity {
             if (pd.isShowing()) {
                 pd.dismiss();
             }
+
+            //setting everything to the results we found in the barcode API
             if (product_name != null) {
                 barcodeName.setText(product_name.toString());
             }

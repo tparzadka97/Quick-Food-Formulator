@@ -25,14 +25,14 @@ public class cameraActivity extends AppCompatActivity {
     private CameraSource cameraSource;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        //starting activity
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
-        sv = (SurfaceView)findViewById(R.id.sv_camera);
+        setContentView(R.layout.activity_camera);           //camera layout
+        sv = (SurfaceView)findViewById(R.id.sv_camera);     //the camera layout on the screen
         startCameraSource();
     }
 
-    private void startCameraSource() {
+    private void startCameraSource() {      //starts up camera, looks for barcodes
 
         // Create the BarcodeDetector
         barcodeDetector = new BarcodeDetector.Builder(this).build();
@@ -87,7 +87,7 @@ public class cameraActivity extends AppCompatActivity {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
 
                 if (barcodes.size() > 0) {
-                    Intent intent = new Intent();
+                    Intent intent = new Intent();        //Intent: abstract description of an operation to be performed.
                     intent.putExtra("barcode", barcodes.valueAt(0)); // Gets the latest barcode from the array
                     setResult(CommonStatusCodes.SUCCESS, intent);
                     finish();
