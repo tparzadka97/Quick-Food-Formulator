@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public String product_name = "";
     public String barcode_number = "";
 
-    TextView barcodeResult;
+    TextView barcodeResult;     //barcode id
     TextView barcodeIngredients;
     TextView barcodeName;
     TextView qrResult;
@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
                         qrResult.setText("");
                     }
                     //If the Barcode is a number
-                    if(barcode.valueFormat == 5) {
+                    if(barcode.valueFormat == 5) {      //PRODUCT
                         new JsonTask().execute("https://api.barcodelookup.com/v2/products?barcode=" + barcode.displayValue + "&formatted=y&key=jjgszqhu4fhqqa6369sd9elzn13omy");
                     }
-                    else if (barcode.valueFormat == 8) {
+                    else if (barcode.valueFormat == 8) {        //URL
                         Bundle bundle = new Bundle();
                         Intent i = new Intent(this, Result.class);
                         bundle.putString("qr_result", barcode.displayValue);

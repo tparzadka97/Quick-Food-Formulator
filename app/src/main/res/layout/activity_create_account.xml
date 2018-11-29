@@ -11,10 +11,9 @@
         android:id="@+id/FirstNameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="326dp"
+        android:layout_below="@id/imageView"
         android:layout_marginRight="10dp"
         android:backgroundTint="#3a07f4"
         android:hint="First Name"
@@ -97,7 +96,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="82dp"
         app:srcCompat="@drawable/qfftransparent" />
 
 
