@@ -29,6 +29,7 @@ public class cameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
 
         sv = (SurfaceView) findViewById(R.id.sv_camera);
+        cameraSource();
 
     }
 
