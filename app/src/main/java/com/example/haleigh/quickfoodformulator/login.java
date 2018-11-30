@@ -29,16 +29,16 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
         findViewById(R.id.register).setOnClickListener(this);   //various buttons on login page
         findViewById(R.id.login).setOnClickListener(this);
+        findViewById(R.id.forgotpassword).setOnClickListener(this);
 
         email = findViewById(R.id.emailField);
         password = findViewById(R.id.passwordField);
         auth = FirebaseAuth.getInstance();
-
     }
 
 
     @Override
-    public void onClick(View v) {       //seeing which button they click
+    public void onClick(View v) {       //seeing which button they click on the login page
         switch (v.getId()) {
             case R.id.register:
                 startActivity(new Intent(this, createAccount.class));  //go to createAccount if they click on register instead of login
@@ -47,6 +47,11 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.login:
                 FirebaseSignin(email.getText().toString(), password.getText().toString());  //signing in w/ email and password
+                break;
+        }
+        switch (v.getId()) {
+            case R.id.forgotpassword:
+                startActivity(new Intent(this, forgotPassword.class));      //go to forgotPassword if they click on forgot password
                 break;
         }
     }
@@ -106,6 +111,5 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
         return valid;
     }
-
 
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgroundgradient">
+
+
+    <TextView
+        android:id="@+id/enterEmail"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/background_light"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:text="Please enter the email address registered on your account."
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#3a07f4"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#3a07f4"
+        android:textColorHint="#3a07f4" />
+
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/emailField"
+        android:background="@drawable/roundbutton"
+        android:text="Reset Password"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="#0d2cf7" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="82dp"
+        app:srcCompat="@drawable/qfftransparent" />
+
+
+</RelativeLayout>
